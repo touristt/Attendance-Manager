@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+	<title>Attendance Manager</title>
+	<meta charset="UTF-8">
+  <meta name="theme-color" content="#01518c" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script type="text/javascript">
+if (screen.width <= 770) {
+document.location = "/tt";
+}
+</script>
+
+   <style type="text/css">
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+  .error{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;text-align: center;}
+
+body {               width:   100%;
+              
+               background:white;
+  font-family:   'Montserrat', sans-serif;
+                   display:   -webkit-box;
+
+          -webkit-box-pack:   center;
+             
+} 
+   	#wrapper{
+   		
+   		 
+   		max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+           
+
+   	}
+   	nav{ 
+   	width: 100%;
+   		height: 50px;
+   		background:#1c79be;
+      position: fixed;
+      top: 0;
+   		color: white;
+
+   	}
+   	nav li{
+   		display: inline-block;
+   		list-style: none;
+   	}
+   	li {
+    float: right;
+}
+   
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+   
+    text-decoration: none;
+}
+
+
+   nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1c79be;
+
+}
+
+ 
+ 
+ .boxwrap{-webkit-box-flex:   1;
+      
+             }
+ .box{
+ border: 2px solid white;
+border-radius: 5px;
+ background:#e9e9eb;
+ 
+            float: left;
+
+width: 13.5%;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 0.68%;
+  
+ } .box2{
+ border: 2px solid white;
+border-radius: 5px;
+ background:#e9e9eb;
+  padding-bottom: 10px; 
+  padding-left: 10px;
+
+width:97%;
+  height: auto;
+  margin-top: 70px;
+  margin-bottom: 10px;
+  margin-right:auto;
+  margin-left: auto;
+  
+ }
+ .padding{padding-top: 70px;}
+.mark{margin-left:7%;}
+ a {text-decoration:none;}
+ body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+
+.subholder{
+  width: 98%;margin-top: 7px;margin-bottom: 7px;
+  margin-left: auto;margin-right: auto;
+  background: white;border-radius: 5px;
+    word-wrap: break-word;
+}
+span{font-weight: 600}
+.formholder{-webkit-box-flex:   1;
+      
+            display:flex;justify-content:center;align-items:center;}
+
+.fa-plus{margin-left: 10px;}
+.fa-times-circle{color: #cc1c1c; }
+i{font-size: 20px;margin-right: 10px; cursor: pointer;}
+.box:nth-of-type(1){margin-left: 0.69%;}
+
+.log{ padding: 14px 16px;}
+.hidden{display: none;}
+
+   </style>
+</head>
+<body>  <%var t  = new Date(),
+      td = t.getUTCDate(),
+      tm = t.getUTCMonth() + 1,
+      ty = t.getUTCFullYear(),
+       str = ty+""+tm+""+td;
+      
+      %>
+<div id="wrapper">
+<nav>
+		<ul><%if(!currentUser){%>
+			<li><a href="/login" class="log">Login</a></li>
+			<li><a href="/register" class="log">Sign Up</a></li><%}else{%>
+       <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/withtt/combined/<%=ty%>/<%=tm%>"><i class="fas fa-arrow-left"></i></a></li>
+      <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/"><i class="fas fa-home"></i></li></a>
+       <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px; cursor: pointer;" onclick="toggle();">Add a class<i class="fas fa-plus"></i></li>
+			<li><a href="/logout" class="log">Logout</a></li><%}%>
+		</ul>
+</nav>
+
+<section>
+
+  <% if (subject.length===0) { -%>
+ <div class="boxwrap "><a href="/withtt/combined/<%=ty%>/<%=tm%>"><div class="subholder" style="width: 300px; text-align: center;color: #565655; padding: 15px;margin-top: 70px; "> Try adding a Subject first</div></a></div>
+ 
+<% } else { -%>
+ 
+
+<div class="boxwrap2 hidden"><div class="box2" style="background: white; padding:10px;">
+
+  <p>Add a class here: </p><form action="/addClass" method="POST">
+  <select name="subject" style="height: 30px;" required>
+    <% for (var i = 0; i < subject.length; i++) { -%>
+      <option  value="<%=subject[i].name%>"><%=subject[i].name%></option>
+    <% } -%>
+  </select>
+
+  <input type="time" name="time" style="height: 30px;margin-left: 10px;" required>
+  <input type="checkbox" style="margin-left: 10px;" name="day" onclick="check(1)" value="Monday"><label for="Mon">Mon</label>
+  <input type="checkbox" style="margin-left: 10px;" name="day" onclick="check(2)" value="Tuesday"><label for="Tue">Tue</label>
+  <input type="checkbox" style="margin-left: 10px;" name="day" onclick="check(3)" value="Wednesday"><label for="Wed">Wed</label>
+  <input type="checkbox" style="margin-left: 10px;" name="day" onclick="check(4)" value="Thursday"><label for="Thu">Thu</label>
+  <input type="checkbox" style="margin-left: 10px;" name="day" onclick="check(5)" value="Friday"><label for="Fri">Fri</label>
+  <input type="checkbox" style="margin-left: 10px;" name="day" onclick="check(6)" value="Saturday"><label for="Sat">Sat</label>
+  <input type="checkbox" style="margin-left: 10px;" name="day" onclick="check(7)" value="Sunday"><label for="Sun">Sun</label>
+  <button style="padding: 2px; background: white; cursor: pointer;margin-left: 10px;">Add</button>
+   </form></div></div>
+	<div class="boxwrap padding"><% if (error && error.length>0) { -%>
+       <div class="error"><%=error%></div>
+    <% } -%>
+<% var arr = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]%>
+<% for (var i = 0; i < arr.length; i++) { -%>
+<div class="box">
+ <p style="display: block;font-size: 20px; background: white;text-align: center;font-weight: 500"><%=arr[i]%></p>
+<% tt.sort(function(a,b) {return (Number(a.time.slice(0,2)) > Number(b.time.slice(0,2))) ? 1 : (Number(b.time.slice(0,2)) > Number(a.time.slice(0,2))) ? -1 : 0} ).forEach(function(tt){ %>
+  <% if (tt.day===arr[i]) { %>
+<div class="subholder">
+  
+  <form method="POST" action="/tt/remove/<%=tt._id%>" style="float: right;" ><button style="background: rgba(0,0,0,0);border:0px;margin-top: 3px;"><i class="fas fa-times-circle" title="remove this class"></i></button></form>
+  <p style="padding: 2px 2px 4px 6px;"><%=tt.sub%></p>
+    <p style="padding: 2px 2px 4px 6px;"><%=tt.time%></p>
+  </div>
+ <% }})%>
+</div>
+<% } -%></div><% } -%>
+</section>
+</div>
+<script type="text/javascript">
+  function toggle() {
+    document.querySelector(".boxwrap").classList.toggle("padding");
+    document.querySelector(".boxwrap2").classList.toggle("hidden");
+  }
+  function check(num){var nn = num+1;
+  
+    var cb = document.querySelector('input[name="day"]:nth-of-type('+nn+')').checked;
+    if(cb){document.querySelector("label:nth-of-type("+num+")").style.color="#1c79be";
+  
+  }
+ 
+else{
+ document.querySelector("label:nth-of-type("+num+")").style.color="black";
+  }
+}
+
+
+ 
+</script>
+  
+
+
+</body>
+</html>
+
+

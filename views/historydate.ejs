@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <title>Attendance Manager</title>
+  <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color" content="#01518c" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   <style type="text/css">
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+body {               width:   100%;
+              
+               background:white;
+  font-family:   'Montserrat', sans-serif;
+                   display:   -webkit-box;
+          -webkit-box-pack:   center;
+             
+} 
+    #wrapper{
+      
+       
+      max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+
+           
+
+    }
+    nav{ 
+      width: 100%;
+      height: 50px;
+      background:#1c79be;
+      color: white;
+      position: fixed;
+    top: 0;
+    }
+    nav li{
+      display: inline-block;
+      list-style: none;
+    }
+    li {
+    float: right;
+}
+   
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+       text-decoration: none;
+}
+
+
+   nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1c79be;
+
+}
+
+ 
+
+
+ a {text-decoration:none;}
+ .boxwrap{-webkit-box-flex:   1;
+      
+            display:flex;justify-content:center;align-items:center;
+               margin-top:  60px;}
+      
+
+ .box{
+ border: 2px solid white;
+border-radius: 5px;
+ background:#e9e9eb;
+ 
+
+  height: auto;
+  width: 350px;
+  
+  margin-bottom: 10px;
+  
+  
+ }
+
+ a {text-decoration:none;}
+ body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+
+.subholder{
+  width: 98%;margin-top: 7px;margin-bottom: 7px;
+  margin-left: auto;margin-right: auto;
+  background: white;border-radius: 5px;
+
+}
+span{font-weight: 600}
+.fa-check-circle{color: green;}
+.fa-times-circle{color: #cc1c1c;}
+.fa-minus-circle{color: #ced32a;}
+.fa-plus-circle{color: green;}
+.fa-chevron-circle-right{color: #165dac;}
+.fa-chevron-circle-left{color: #165dac;}
+i{font-size: 20px;margin-right: 10px; cursor: pointer;}
+.log{ padding: 14px 16px;
+}
+   </style>
+</head>
+<body>
+<div id="wrapper">
+<nav>
+    <ul><%if(!currentUser){%>
+
+      <li><a href="/login" class="log">Login</a></li>
+      <li><a href="/register" class="log">Sign Up</a></li><%}else{%>
+      <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/withtt/history/<%=year%>/<%=month%>"><i class="fas fa-arrow-left"></i></a></li>
+      <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/"><i class="fas fa-home"></i></a></li>
+      <li><a href="/logout" class="log">Logout </a></li><%}%>
+    </ul>
+</nav>
+
+<section>
+  <div class="boxwrap">
+   
+   <div class="box subs"> 
+
+<% var arr = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]%>
+<%var month_arr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];%>
+<%var str= year+''+month+''+day%>
+  
+ <p style="display: block;font-weight: 600; font-size: 20px; background: white;text-align: center;"><%=arr[vaar]%>, <%=" " + month_arr[month-1]+" "%> <%=day+" "%><%=year%> </p>
+
+   <% tt.sort(function(a,b) {return (Number(a.time.slice(0,2)) > Number(b.time.slice(0,2))) ? 1 : (Number(b.time.slice(0,2)) > Number(a.time.slice(0,2))) ? -1 : 0} ).forEach(function(tt){ %>
+	
+	<% if (tt.day===arr[vaar]) { %>
+	<%var check = 0; %>
+	<div class="subholder">
+	 <p style="padding: 7px 0 0 20px ; "><%=tt.sub%></p>
+		 <p style="padding-left: 25px; margin-top: 5px;"><%=tt.time%></p>
+	
+		<%history.forEach(function(item){
+			if(item.date==str){
+				for(var i = 0; i < item.mark.length; i++) { %> 
+				 <%if(item.mark[i].name==tt.sub&&item.mark[i].time==tt.time) {  %>
+				  <%if(item.mark[i].value===1){ check++; %>
+				  <p style="padding-left: 25px; color: green; margin-top: 5px;">marked as present</p>
+				 <div style="display: flex;align-items: left;margin-top: 5px;padding-bottom:5px;"> <p style="padding-left: 25px; ">change to : 	</p>
+				 	<div style="margin-left: 10px;" >  <form method="POST" action="/withtt/change/<%=item._id%>/<%=tt.sub%>/1/-1/<%=str%>/<%=tt.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form></div>
+
+                 
+                    <p>or</p><div style="margin-left: 10px;" ><form method="POST" action="/withtt/change/<%=item._id%>/<%=tt.sub%>/1/0/<%=str%>/<%=tt.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form></div>
+		</div> <%} %>
+				<%if(item.mark[i].value===0){ check++; %>
+				  <p style="padding-left: 25px; color: #c8cc00; margin-top: 5px;">not counted </p>
+				   <div style="display: flex;align-items: left;margin-top: 5px;padding-bottom:5px;"><p style="padding-left: 25px; ">change to : </p>
+				   	<div style="margin-left: 10px;" >   <form method="POST" action="/withtt/change/<%=item._id%>/<%=tt.sub%>/0/1/<%=str%>/<%=tt.time%>"> <button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle"title="click if attended the class"></i></button></form></div><p>or</p>
+				   	<div style="margin-left: 10px;" ><form method="POST" action="/withtt/change/<%=item._id%>/<%=tt.sub%>/0/-1/<%=str%>/<%=tt.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form></div>
+             
+                 
+		</div>
+		
+
+				<%} %>
+				<%if(item.mark[i].value===-1){ check++; %>
+				 <p style="padding-left: 25px; color: #cc1c1c; margin-top: 5px;">marked as absent</p>
+			<div style="display: flex;align-items: left;margin-top: 5px;padding-bottom:5px;">	<p style="padding-left: 25px; ">change to :</p>
+				<div style="margin-left: 10px;" ><form method="POST" action="/withtt/change/<%=item._id%>/<%=tt.sub%>/-1/1/<%=str%>/<%=tt.time%>"> <button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle"title="click if attended the class"></i></button></form></div><p>or</p>
+				<div style="margin-left: 10px;" ><form method="POST" action="/withtt/change/<%=item._id%>/<%=tt.sub%>/-1/0/<%=str%>/<%=tt.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form></div>
+                   	
+                   	
+		</div>
+			
+
+				<%} %>
+			<%}%>
+	<%}}});%>
+<%if(check == 0){%>
+			  <p style="padding-left: 25px; color:#1c79be; margin-top: 5px;">unmarked yet</p>
+			  <div  style="display: flex;align-items: left;margin-top: 5px; padding-bottom: 5px;">
+			  	<p style="padding-left: 25px; ">mark:</p>
+			  	<form method="POST" action="/withtt/mark/<%=tt.sub%>/1/<%=str%>/<%=tt.time%>"> <button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle"title="click if attended the class" style="padding-left: 48px; "></i></button></form>
+		<form method="POST" action="/withtt/mark/<%=tt.sub%>/-1/<%=str%>/<%=tt.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form>
+		<form method="POST" action="/withtt/mark/<%=tt.sub%>/0/<%=str%>/<%=tt.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form>
+			  </div>
+					
+					  <%   } %>
+ </div>   
+<% }%>
+
+<% });%>
+ <% for (var i = 0; i < extra.length; i++) { -%>
+  <% if(extra[i].date == str ){-%>
+<p style="display: block;font-size: 20px; background: white;text-align: center;margin-top: 10px;margin-bottom: 10px;padding-top: 10px;padding-bottom: 10px;">extra classes</p>
+<% break;}} -%>
+  <% extra.sort(function(a,b) {return (Number(a.time.slice(0,2)) > Number(b.time.slice(0,2))) ? 1 : (Number(b.time.slice(0,2)) > Number(a.time.slice(0,2))) ? -1 : 0} ).forEach(function(ext){ %>
+  <% if (ext.date===str){ %>
+<div class="subholder">
+  <p style="padding-left: 20px"><%=ext.sub%></p>
+    <p style="padding-left: 25px"><%=ext.time%></p>
+    
+    
+
+<%if(ext.value == 10){%>
+        <p style="padding-left: 25px; color:#1c79be; margin-top: 5px;margin-bottom: 8px;margin-right: 5px;">unmarked yet</p>
+        <div  style="display: flex;align-items: left;margin-top: 5px; padding-bottom: 5px;">
+      <p style="padding-left: 25px;margin-right: 17%; ">mark:</p>
+         <form method="POST" action="/withtt/mark/ext/<%=ext.sub%>/1/<%=str%>/<%=ext.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle"  title="click if attended the class"></i></button></form>
+    <form method="POST" action="/withtt/mark/ext/<%=ext.sub%>/-1/<%=str%>/<%=ext.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form>
+    <form method="POST" action="/withtt/mark/ext/<%=ext.sub%>/0/<%=str%>/<%=ext.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form>
+        </div>
+            <%}%>
+   <%if(ext.value===1){%>
+          <p style="padding-left: 25px; color: green; margin-top: 5px;">marked as present</p>
+         <div style="display: flex;align-items: left; margin-top: 5px;padding-bottom:5px;">
+          <p style="padding-left: 25px; ">change to : </p>
+          <div style="margin-left: 10px;" > 
+           <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/1/-1/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form>
+         </div>
+         <p>or</p>
+              <div style="margin-left: 10px;" >
+                <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/1/0/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form>
+              </div>
+    </div>
+        <%} %> 
+          <%if(ext.value===-1){%>
+          <p style="padding-left: 25px; color: #cc1c1c; margin-top: 5px;">marked as absent</p>
+         <div style="display: flex;align-items: left; margin-top: 5px;padding-bottom:5px;">
+          <p style="padding-left: 25px; ">change to :  </p>
+          <div style="margin-left: 10px;" > 
+           <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/-1/1/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle" title="click if attended the class"></i></button></form>
+         </div>
+         <p>or</p>
+              <div style="margin-left: 10px;" >
+                <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/-1/0/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form>
+               </div>
+    </div>
+     <%} %>  
+          <%if(ext.value===0){%>
+          <p style="padding-left: 25px;color: #c8cc00; margin-top: 5px;">not counted</p>
+         <div style="display: flex;align-items: left; margin-top: 5px;padding-bottom:5px;">
+          <p style="padding-left: 25px; ">change to :  </p>
+          <div style="margin-left: 10px;" > 
+           <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/0/1/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle" title="click if attended the class"></i></button></form>
+         </div>
+         <p>or</p>
+              <div style="margin-left: 10px;">
+                <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/0/-1/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form>
+              </div>
+    </div>
+    
+
+        <%} %>
+    
+ </div>
+
+
+<% }});%>
+
+   </div> 
+  </div>
+
+</section>
+
+</div>
+
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<%if(currentUser.username=="yash"){%>
+
+<% if (error && error.length>0) { -%>
+		<div class="error"><%=error%></div>
+	<% } -%>
+	<% if (success&& success.length>0) { -%>
+		<div class="success"><%=success%></div>
+	<% } -%>
+<form method="POST" action="/addtt">
+	<input type="text" name="username">
+	<select name="group">
+		<option>group1</option>
+		<option>group2</option>
+	</select>
+	<input type="submit" name="">
+</form>
+<%}%>

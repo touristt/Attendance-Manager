@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+	<title>Login</title>
+	<meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color" content="#01518c" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   <style type="text/css">
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+body {               width:   100%;
+              
+               
+  font-family:   'Raleway', sans-serif;
+                   display:   -webkit-box;
+          -webkit-box-pack:   center;
+             
+} 
+
+   	#wrapper{
+  
+   		max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+           
+
+   	}
+  body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+   	section{-webkit-box-flex:   1;
+   		
+            display:flex;justify-content:center;align-items:center;
+               margin-top:   40px;}
+               .box p {
+    display: block;
+    color: white;
+      padding: 14px 16px;
+    text-align: center;
+    font-size:20px;
+    text-decoration: none;
+} 
+
+.box{
+ border: 2px solid white;
+ box-shadow:   0 5px 10px rgba(0,0,0,.6);
+ background: rgba(0,0,0,0);
+ color: white;
+width: 350px;
+  height: 400px;
+  margin-bottom: 10px;
+ }
+ form{
+ 	margin-top: 10px;
+ }
+input{
+	height:40px;width: 75%;margin-bottom: 20px;font-weight: 600;padding-left:15px; padding-right:15px; 
+	
+}
+i{font-size: 35px; margin-left: 10px;margin-right: 10px;vertical-align:sub;}
+button{
+	height: 40px;width: 75%;margin-top: 40px;margin-left: 15%;border:2px solid white;
+	background: rgba(0,0,0,0);color: white;font-size: 15px;cursor: pointer;
+}
+button:hover{
+transform:   translateY(-3px);
+               box-shadow:   0 10px 20px rgba(0,0,0,.2)
+
+}
+button:active{
+                transform:   translateY(-1px);
+               box-shadow:   0 5px 10px rgba(0,0,0,.2)
+            } 
+            .error{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;text-align: center;}
+a{text-decoration: none;}
+   </style></head><body>  <div id="wrapper">
+    <% if (error && error.length>0) { -%>
+       <div class="error"><%=error%></div>
+    <% } -%>
+  
+   	<section>
+   		<div class="box">
+
+   		<p style="font-size: 35px;">login</p>
+   
+		<form action="/login" method="POST">
+			<i class="fas fa-user-circle"></i>
+	<input type="text" name="username" placeholder="Username">
+	<i class="fas fa-key"></i>
+	<input type="password" name="password" placeholder="Password">
+<button>login</button>
+<a href="/forgot"><p style="font-size: 15px;color: blue;">Forgot Password?</p></a></a>
+<p >Not registered yet?<a href="/register"><br>Create an account</a></p>
+
+</form>
+	</div>
+   		
+</section>
+    
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+	<title>Attendance Manager</title>
+	<meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color" content="#01518c" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   <style type="text/css">
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+body {               width:   100%;
+              
+               background:white;
+  font-family:   'Montserrat', sans-serif;
+                   display:   -webkit-box;
+          -webkit-box-pack:   center;
+             
+} 
+   	#wrapper{
+   		
+   		 
+   		max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+           
+
+   	}
+   	nav{ 
+   		max-width: 100%;
+   		height:  50px;
+   		background:#1c79be;
+   		color: white;
+
+   	}
+   	nav li{
+   		display: inline-block;
+   		list-style: none;
+   	}
+   	li {
+    float: right;
+}
+   
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+  
+    text-decoration: none;
+}
+.log{  padding: 14px 16px;}
+
+   nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1c79be;
+
+}
+ a {text-decoration:none;}
+ body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+.boxwrap{-webkit-box-flex:   1;
+      
+            display:flex;justify-content:center;align-items:center;
+               margin-top:  80px;}
+      .error{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;text-align: center;}
+
+ .box{
+ 
+border-radius: 5px;
+  height: auto;
+  width: 350px;
+ 
+  margin-bottom: 10px;
+  text-align:center; 
+  
+ }.subholder{
+  width: 98%;padding-top: 10px;margin-bottom: 7px;margin-top: 10px;padding-bottom: 10px;
+  margin-left: auto;margin-right: auto;
+  background: white;border-radius: 5px;
+
+}
+ </style></head><body>
+ 	<div id="wrapper">
+<nav>
+		<ul><%if(!currentUser){%>
+			<li><a href="/login" class="log">Login</a></li>
+			<li><a href="/register" class="log">Sign Up</a></li><%}else{%>
+			 <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/withtt/subs"><i class="fas fa-arrow-left"></i></a></li>
+       <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/"><i class="fas fa-home"></i></a></li>
+			<li><a href="/logout" class="log">Logout</a></li><%}%>
+		</ul>
+</nav>
+<% if (error && error.length>0) { -%>
+       <div class="error"><%=error%></div>
+    <% } -%>
+<section>
+
+		<%var t  = new Date(),
+			td = t.getUTCDate(),
+			tm = t.getUTCMonth() + 1,
+			ty = t.getUTCFullYear();%>
+		<div class="boxwrap"><div class="box"><div class="subholder">
+			<form method="POST" action="/delete/withttsub/<%=subject._id%>" class="delform">
+     <p onclick="delalert()"  style="  
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+      font-size:   15px;
+cursor: pointer;
+             margin:5px auto;
+            margin-left: 5%; 
+                   width:  90%;
+                   margin-bottom: 10px;float: left;
+                   background:red;
+      ">Delete this subject</p>   
+      </form>
+			<form method="POST" action="/sub/edit/<%=subject._id%>">
+				<p style="display: block;font-size: 20px; background: white;text-align: center;">Name: </p> <input type="text" name="name" value="<%=subject.name%>" required>
+        <p style="display: block;font-size: 20px; background: white;text-align: center;">Attended: </p> <input type="Number" name="attended" value="<%=subject.attended%>" required title="total should be greater than attended" min="0">
+	  <p style="display: block;font-size: 20px; background: white;text-align: center;">Total:</p><input type="Number" name="total" value="<%=subject.total%>" required title="total should be greater than attended" min="0">
+	  <p style="display: block;font-size: 20px; background: white;text-align: center;">Minimum required:</p> <input type="Number" name="min" value="<%=subject.min%>" min="1" max="100">
+ <button style="display: block;font-size: 20px;
+ margin: auto;cursor: pointer;
+ width: 50%; background: white;text-align: center;margin-top: 10px;margin-bottom: 10px;padding-top: 2px;padding-bottom: 2px;">save</button>
+</form>
+
+</div>
+			
+        </div>
+    </div>	 
+</section>
+ 	</div>
+ <script type="text/javascript">
+   function delalert() {
+       var ans = prompt("deleting this subject will erase all its data from time table and attendance history are you sure to delete? Just type y or n");
+   if(ans.toLowerCase()=="yes"||ans.toLowerCase()=="yeah"||ans.toLowerCase()=="yup"||ans.toLowerCase()=="y")
+   {document.querySelector(".delform").submit();}
+   else{
+     document.querySelector(".delform").href="/sub/edit/<%=subject._id%>";
+   }
+   }
+ </script>
+</body>
+</html>

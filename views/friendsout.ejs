@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+  <title>Attendance Manager</title>
+  <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color" content="#01518c" />
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+   <style type="text/css">
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+body {               width:   100%;
+              
+               background:white;
+  font-family:   'Montserrat', sans-serif;
+                   display:   -webkit-box;
+          -webkit-box-pack:   center;
+             
+} 
+    #wrapper{
+      
+       
+      max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+           
+
+    }
+    nav{ 
+      width: 100%;
+      height:  50px;
+      background:#1c79be;
+      position: fixed;
+      top: 0;
+      color: white;
+
+    }
+    nav li{
+      display: inline-block;
+      list-style: none;
+    }
+    li {
+    float: right;
+}
+   
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+   
+    text-decoration: none;
+}
+
+ 
+   nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1c79be;
+
+}
+
+ 
+ 
+ .boxwrap{-webkit-box-flex:   1; }
+ a {text-decoration:none;}
+  .boxwrap{-webkit-box-flex:   1;
+            display:flex;justify-content:center;align-items:center;
+               margin-top: 60px;}
+ .box{
+ border: 2px solid white;
+  border-radius: 5px;
+ background:#e9e9eb;
+  height: auto;
+  width: 350px;
+  margin-bottom: 10px;
+ }
+ 
+section{display: flex; align-items: center;justify-content: center;  margin-top: 40px;}
+ a {text-decoration:none;}
+ body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+
+.subholder{
+  width: 98%;margin-top: 7px;margin-bottom: 7px;font-size: 15px;
+  margin-left: auto;margin-right: auto;border:1px solid #1c79be;padding: 6px;
+  background: white;border-radius: 5px;color: #1c79be;text-align:center;
+
+}
+
+.formholder{-webkit-box-flex:1;display:flex;justify-content:center;align-items:center;}
+.fa-check-circle{color: green;}
+.fa-times-circle{color: #cc1c1c;}
+.fa-minus-circle{color: #ced32a;}
+.fa-plus-circle{color: green;}
+.fa-chevron-circle-right{color: #165dac;}
+.fa-chevron-circle-left{color: #165dac;}
+.fa-arrow-down{color:#1c79be;}
+.fa-arrow-up{color:#1c79be;}
+i{font-size: 20px;margin-right: 10px; cursor: pointer;}
+.log{padding: 14px 16px;}
+.error{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#721c24;background-color:white;border-color:#1c79be; text-align: center;font-weight: 600;}
+.success{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#1c79be;background-color:white;border-color:#1c79be; text-align: center;font-weight: 600;}
+   </style>
+</head>
+<body>
+<div id="wrapper">
+<nav>
+    <ul><%if(!currentUser){%>
+      <li><a href="/login" class="log">Login</a></li>
+      <li><a href="/register" class="log">Sign Up</a></li>
+      <%}else{%>
+       <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/friends"><i class="fas fa-arrow-left"></i></a></li>
+ <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/"><i class="fas fa-home"></i></a></li>
+
+      <li><a href="/logout" class="log">Logout</a></li>
+      <%}%>
+</nav>
+
+
+<section>
+
+<div class="boxwrap">
+  <div class="box">
+    <%var a=0,b=0,c=0;%>
+
+     <p style="display: block;font-size: 20px; background: white;text-align: center;">Waiting</p>
+    <% for (var i = 0; i < user.friendsRequestsOut.length; i++) { -%>
+    <%   if(user.friendsRequestsOut[i].status==0){a++;%>
+      <div class="subholder" style="padding: 5px; ">
+       <span style="color: black;"> <%=user.friendsRequestsOut[i].name%> </span>hasn't accepted your friend request yet
+      </div>
+    <% }-%> 
+   
+     
+  <%} -%>  <%if(a==0){%> 
+   <p style="display: block;font-size: 15px; text-align: center;">No requests are in waiting.</p>
+    <%}%>    <p style="display: block;font-size: 20px; background: white;text-align: center;">Accepted</p>
+    <% for (var i = 0; i < user.friendsRequestsOut.length; i++) { -%>
+    <%   if(user.friendsRequestsOut[i].status==1){b++;%>
+      <div class="subholder" style="padding: 5px;color:green; ">
+       <span style="color: black;"> <%=user.friendsRequestsOut[i].name%> </span> has accepted your friend request
+      </div>
+    <% }-%>  
+     
+  <%} -%>  <%if(b==0){%> 
+   <p style="display: block;font-size: 15px; text-align: center;">No requests are in the accepted list.</p>
+    <%}%>    <p style="display: block;font-size: 20px; background: white;text-align: center;">declined</p>
+    <% for (var i = 0; i < user.friendsRequestsOut.length; i++) { -%>
+     <%   if(user.friendsRequestsOut[i].status==-1){c++;%>
+      <div class="subholder" style="padding: 5px;color: #cc1c1c;">
+       <span style="color: black;"> <%=user.friendsRequestsOut[i].name%> </span> has declined your friend request 
+      </div>
+    <% }-%>
+   
+     <%}%>   <%if(c==0){%> 
+   <p style="display: block;font-size: 15px; text-align: center;">No requests are in the declined list.</p>
+    <%}%>
+  
+ 
+  
+   
+  </div>
+</div>
+  </section>
+
+</div>
+
+
+
+
+</body>
+</html>
+
+

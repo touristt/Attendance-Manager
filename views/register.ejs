@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+	<title>Register</title> <meta name="theme-color" content="#01518c" />
+	<meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   <style type="text/css">
+  
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+body {               width:   100%;
+              
+               
+  font-family:   'Raleway', sans-serif;
+                   display:   -webkit-box;
+          -webkit-box-pack:   center;
+             
+} 
+   	#wrapper{
+   		
+   		 
+   		max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+           
+
+   	}
+   	  body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+ 
+   	section{-webkit-box-flex:   1;
+   		
+            display:flex;justify-content:center;align-items:center;
+               margin-top:   40px;}
+               .box p {
+    display: block;
+    color: white;
+      padding: 14px 16px;
+    text-align: center;
+    font-size:20px;
+    text-decoration: none;
+} 
+.error{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb; text-align: center;}
+.success{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#155724;background-color:#d4edda;border-color:#c3e6cb; text-align: center;}
+.box{
+ border: 2px solid white;
+ box-shadow:   0 5px 10px rgba(0,0,0,.6);
+ background: rgba(0,0,0,0);
+ color: white;
+width: 350px;
+  height: 400px;
+  margin-bottom: 10px;
+ }
+ form{
+ 	margin-top: 10px;
+ }
+input{
+	height:40px;width: 75%;margin-bottom: 20px;font-weight: 600;padding-left:15px; padding-right:15px;
+	
+}
+i{font-size: 35px; margin-left: 10px;margin-right: 10px;vertical-align:sub;}
+button{
+	height: 40px;width: 75%;margin-top: 20px;margin-left: 15%;border:2px solid white;
+	background: rgba(0,0,0,0);color: white;font-size: 15px;cursor: pointer;
+}
+button:hover{
+transform:   translateY(-3px);
+               box-shadow:   0 10px 20px rgba(0,0,0,.2)
+
+}
+button:active{
+                transform:   translateY(-1px);
+               box-shadow:   0 5px 10px rgba(0,0,0,.2)
+            } 
+            .go , .stop {display: none;}
+a{text-decoration: none;}
+   </style></head><body>  <div id="wrapper">
+    <% if (error && error.length>0) { -%>
+    <div class="error"><%=error%></div>
+  <% } -%>
+
+   	<section>
+      
+   		<div class="box">
+
+   		<p style="font-size: 35px;">Register</p>
+   
+		<form action="/register" method="POST">
+			<i class="fas fa-user-circle"></i>
+	<input type="text" name="username"  placeholder="Username">
+	<i class="fas fa-envelope"></i>
+  <input type="email" name="mail"  placeholder="email address" required>
+	<i class="fas fa-key"></i><input type="password" name="password"  placeholder="Password">
+  <div class="go"><i class="fas fa-check"></i> Good to go!</div>
+  <div class="stop"><i class="fas fa-times"></i> Try another one! that exists already.</div>
+<button>Sign Up</button>
+<p >Already registered?<a href="/login"><br>Login</a></p>
+
+</form>
+	</div>   		
+</section>
+</div>
+
+</body>
+</html>

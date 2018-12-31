@@ -1,0 +1,10 @@
+<head><style type="text/css">
+	::selection{background: #b1f9f9;}
+</style><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<% for (var i = 0; i < subjects.length; i++) { -%>
+	<div class="div"><form method="POST" action="/wott/mark/1/<%=subjects[i]._id%>/"><button>+1</button></form>
+     <h4><%=subjects[i].name%></h4>
+     <form method="POST" action="/wott/mark/0/<%=subjects[i]._id%>/"><button>-1</button></form>
+</div>
+<% } -%>

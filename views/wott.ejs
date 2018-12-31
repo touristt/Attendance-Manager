@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+	<title>Attendance Manager</title>
+	<meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color" content="#01518c" />
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   <style type="text/css">
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+body {               width:   100%;
+              
+               background:white;
+  font-family:   'Montserrat', sans-serif;
+                   display:   -webkit-box;
+          -webkit-box-pack:   center;
+             
+} 
+   	#wrapper{
+   		
+   		 
+   		max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+           
+
+   	}
+   	nav{ 
+   		max-width: 100%;
+   		height:  50px;
+   		background:#1c79be;
+   		color: white;
+
+   	}
+   	nav li{
+   		display: inline-block;
+   		list-style: none;
+   	}
+   	li {
+    float: right;
+}
+   
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+  
+    text-decoration: none;
+}
+.log{  padding: 14px 16px;}
+
+   nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1c79be;
+
+}
+ a {text-decoration:none;}
+ body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+.boxwrap{-webkit-box-flex:   1;
+      
+            display:flex;justify-content:center;align-items:center;
+               margin-top:  80px;}
+      
+
+ .box{
+ 
+border-radius: 5px;
+  height: auto;
+  width: 350px;
+ 
+  margin-bottom: 10px;
+  text-align:center; 
+  
+ }.subholder{
+  width: 98%;padding-top: 10px;margin-bottom: 7px;margin-top: 10px;padding-bottom: 10px;
+  margin-left: auto;margin-right: auto;
+  background: white;border-radius: 5px; 
+
+}
+ </style></head><body>
+ 	<div id="wrapper">
+<nav>
+		<ul><%if(!currentUser){%>
+			<li><a href="/login" class="log">Login</a></li>
+			<li><a href="/register" class="log">Sign Up</a></li><%}else{%>
+			 <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/"><i class="fas fa-arrow-left"></i></a></li>
+     
+			<li><a href="/logout" class="log">Logout</a></li><%}%>
+		</ul>
+</nav>
+<section>
+		<%var t  = new Date(),
+			td = t.getUTCDate(),
+			tm = t.getUTCMonth() + 1,
+			ty = t.getUTCFullYear();%>
+		<div class="boxwrap"><div class="box">
+			<a href="/wott/subs" style="color: #353535;"><div class="subholder" style="">Subjects</div></a>
+			<a href="/wott/history/" style="color: #353535;"><div class="subholder" style="">Attendance History</div></a>
+        </div>
+    </div>	 
+</section>
+ 	</div>
+ 
+</body>
+</html>

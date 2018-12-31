@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+	<title>Attendance Manager</title>
+	<meta charset="UTF-8">
+  <meta name="theme-color" content="#01518c" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script type="text/javascript">
+
+if (screen.width <= 770) {
+document.location = "/withtt";
+}
+
+</script>
+
+   <style type="text/css">
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+body {               width:   100%;
+              
+               background:white;
+  font-family:   'Montserrat', sans-serif;
+                   display:   -webkit-box;
+          -webkit-box-pack:   center;
+             
+} 
+   	#wrapper{
+   		
+   		 
+   		max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+           
+
+   	}
+
+   	nav{ 
+   		width: 100%;
+   		height:  50px;
+   		background:#1c79be;
+   		color: white;
+      position: fixed;
+      top: 0; 
+   	}
+
+   	nav li{
+   		display: inline-block;
+   		list-style: none;
+   	}
+
+   	li {
+    float: right; }
+    li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+ nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1c79be;
+
+}
+
+ 
+ 
+ .boxwrap{-webkit-box-flex:   1;
+      
+             }
+
+ a {text-decoration:none;}
+ .box{
+ border: 2px solid white;
+border-radius: 5px;
+ background:#e9e9eb;
+ 
+            float: left;
+
+width: 27%;
+  height: auto;
+  margin-top: 70px;
+  margin-bottom: 10px;
+  margin-right: 30px;
+  
+ }
+ .log{  padding: 14px 16px;}
+.mark{margin-left:7%;}
+ a {text-decoration:none;}
+ body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+
+.subholder{
+  width: 98%;margin-top: 7px;margin-bottom: 7px;
+  margin-left: auto;margin-right: auto;
+  background: white;border-radius: 5px;
+
+}
+span{font-weight: 600}
+.formholder{-webkit-box-flex:   1;
+       display:flex;justify-content:center;align-items:center;}
+.fa-check-circle{color: green;}
+.fa-times-circle{color: #cc1c1c;}
+.fa-minus-circle{color: #ced32a;}
+.fa-plus-circle{color: green;}
+.fa-chevron-circle-right{color: #165dac;}
+.fa-chevron-circle-left{color: #165dac;}
+.fa-calendar-alt{margin-left:5px;}
+
+i{font-size: 20px;margin-right: 10px; cursor: pointer;}
+table{margin: 5px auto 5px auto;width: 80%; padding-bottom: 20px;}
+table a{ text-decoration:none;color: black;font-weight: 600;}
+td {
+    padding: 2px;
+    text-align: left;
+}  .suberror{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;text-align: center;}
+   </style>
+</head>
+<body>
+<div id="wrapper">
+<nav>
+		<ul><%if(!currentUser){%>
+			<li><a href="/login" class="log">Login</a></li>
+			<li><a href="/register" class="log">Sign Up</a></li><%}else{%>
+       <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/"><i class="fas fa-arrow-left"></i></a></li>
+
+      <li  style="float: left; margin: 15px; margin-left: 5px; font-size: 20px; cursor: pointer;"><a href="/bigtt">Time Table<i class="fas fa-calendar-alt"></i></a></li>
+			<li><a href="/logout" class="log">Logout</a></li><%}%>
+		</ul>
+</nav>
+
+<section>
+	<div class="boxwrap">
+    <div class="box mark"> 
+
+     <% var arr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]%>
+      <% var arr2 = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]%>
+        <%var month_arr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];%>
+<%var day = new Date(); var day = day.getUTCDay()%>
+
+<%var t  = new Date(),
+      td = t.getUTCDate(),
+      tm = t.getUTCMonth() + 1,
+      ty = t.getUTCFullYear(),
+       str = ty+""+tm+""+td;
+      
+      %>
+<% function check(tt){var check=0;
+for (var i = 0; i < history.length; i++) { 
+  if(history[i].date == str){
+    for (var j = 0; j < history[i].mark.length; j++) {
+     if(history[i].mark[j].name ==tt.sub &&  history[i].mark[j].time==tt.time){
+      check++;
+     }
+    }
+  }
+ } 
+ if (check==0) {return true;}
+ return false;
+} %>
+ <p style="display: block;font-weight: 600; font-size: 20px; background: white;text-align: center;"><%=arr2[vaar]%>, <%=" " + month_arr[tm-1]+" "%> <%=td+" "%><%=ty%> </p>
+    <p style="display: block;font-size: 20px; background: white;text-align: center;">mark attendance</p>
+    <%var check_if_empty = 0;%>
+<% tt.sort(function(a,b) {return (Number(a.time.slice(0,2)) > Number(b.time.slice(0,2))) ? 1 : (Number(b.time.slice(0,2)) > Number(a.time.slice(0,2))) ? -1 : 0} ).forEach(function(tt){ %>
+  <% if (tt.day===arr[day] && check(tt)) { %>
+<%check_if_empty++%>
+  
+    <div class="subholder">
+  <p style="padding-left: 20px;"><%=tt.sub%></p>
+    <p style="padding-left: 25px;"><%=tt.time%></p>
+    <div class="formholder">   <form method="POST"  action="/withtt/mark/<%=tt.sub%>/1/<%=str%>/<%=tt.time%>">
+      <button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle"title="click if attended the class"></i></button></form>
+    <form method="POST"  action="/withtt/mark/<%=tt.sub%>/-1/<%=str%>/<%=tt.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button>
+    </form>
+    <form method="POST"  action="/withtt/mark/<%=tt.sub%>/0/<%=str%>/<%=tt.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form></div>
+ 
+  </div>
+
+<% }});if (check_if_empty==0) { %>
+  <p style="display: block;font-size: 20px;text-align: center; color: green; margin-top: 20px;">either you have marked all the attendances for the day or its a holiday.</p>
+<% } %>
+
+<% for (var i = 0; i < extra.length; i++) { -%>
+  <% if(extra[i].date == str ){-%>
+<p style="display: block;font-size: 20px; background: white;text-align: center;margin-top: 10px;margin-bottom: 10px;padding-top: 10px;padding-bottom: 10px;">extra classes</p>
+<% break;}} -%>
+<% extra.sort(function(a,b) {return (Number(a.time.slice(0,2)) > Number(b.time.slice(0,2))) ? 1 : (Number(b.time.slice(0,2)) > Number(a.time.slice(0,2))) ? -1 : 0} ).forEach(function(ext){ %>
+  <% if (ext.date==str) { %>
+<div class="subholder">
+  <p style="padding-left: 20px"><%=ext.sub%></p>
+    <p style="padding-left: 25px"><%=ext.time%></p>
+    
+    
+
+<%if(ext.value == 10){%>
+        <p style="padding-left: 25px; color:#1c79be; margin-top: 5px;margin-bottom: 8px;margin-right: 5px;">unmarked yet</p>
+        <div  style="display: flex;align-items: left;margin-top: 5px; padding-bottom: 5px;">
+      <p style="padding-left: 25px;margin-right: 17%; ">mark:</p>
+         <form method="POST" action="/withtt/mark/ext/<%=ext.sub%>/1/<%=str%>/<%=ext.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle"  title="click if attended the class"></i></button></form>
+    <form method="POST" action="/withtt/mark/ext/<%=ext.sub%>/-1/<%=str%>/<%=ext.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form>
+    <form method="POST" action="/withtt/mark/ext/<%=ext.sub%>/0/<%=str%>/<%=ext.time%>"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form>
+        </div>
+            <%}%>
+   <%if(ext.value===1){%>
+          <p style="padding-left: 25px; color: green; margin-top: 5px;">marked as present</p>
+         <div style="display: flex;align-items: left; margin-top: 5px;padding-bottom:5px;">
+          <p style="padding-left: 25px; ">change to : </p>
+          <div style="margin-left: 10px;" > 
+           <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/1/-1/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form>
+         </div>
+         <p>or</p>
+              <div style="margin-left: 10px;" >
+                <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/1/0/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form>
+              </div>
+    </div>
+        <%} %> 
+          <%if(ext.value===-1){%>
+          <p style="padding-left: 25px; color: #cc1c1c; margin-top: 5px;">marked as absent</p>
+         <div style="display: flex;align-items: left; margin-top: 5px;padding-bottom:5px;">
+          <p style="padding-left: 25px; ">change to :  </p>
+          <div style="margin-left: 10px;" > 
+           <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/-1/1/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle" title="click if attended the class"></i></button></form>
+         </div>
+         <p>or</p>
+              <div style="margin-left: 10px;" >
+                <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/-1/0/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-minus-circle" title="click if it was holiday(not to be counted)"></i></button></form>
+               </div>
+    </div>
+     <%} %>  
+          <%if(ext.value===0){%>
+          <p style="padding-left: 25px;color: #c8cc00; margin-top: 5px;">not counted</p>
+         <div style="display: flex;align-items: left; margin-top: 5px;padding-bottom:5px;">
+          <p style="padding-left: 25px; ">change to :  </p>
+          <div style="margin-left: 10px;" > 
+           <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/0/1/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-check-circle" title="click if attended the class"></i></button></form>
+         </div>
+         <p>or</p>
+              <div style="margin-left: 10px;">
+                <form method="POST" action="/withtt/ext/change/<%=ext._id%>/<%=ext.sub%>/0/-1/"><button style="background: rgba(0,0,0,0);border:0px;"><i class="fas fa-times-circle" title="click if missed the class"></i></button></form>
+              </div>
+    </div>
+    
+
+        <%} %>
+    
+ </div>
+
+<% }})%>
+
+<p style="display: block;font-size: 20px; background: white;text-align: center;margin-top: 10px;margin-bottom: 10px;padding-top: 10px;padding-bottom: 10px;">add an extra class:</p>
+  <form action="/addextClass/<%=str%>" method="POST" style="padding-bottom:10px;padding-left: 15px; " >
+  <select name="subject" style="width:40%; margin-bottom:5px; height: 20px;"  required>
+    <% for (var i = 0; i < subject.length; i++) { -%>
+      <option  value="<%=subject[i].name%>"><%=subject[i].name%></option>
+    <% } -%>
+  </select>
+  <input type="time" name="time"  style="height: 20px;" required>
+ <button style="background: rgba(0,0,0,0);border:0px;">
+  <i class="fas fa-plus-circle" title="add" ></i></button>
+   </form>
+
+
+
+   </div> 
+   <div class="box subs"> 
+
+<% if (error && error.length>0) { -%>
+       <div class="suberror"><%=error%></div>
+    <% } -%>
+    <p style="display: block;font-size: 20px; background: white;text-align: center;">subjects</p>
+     <% if (subject.length==0) { -%>
+          <p style="display: block;font-size: 20px;text-align: center; color: green; margin-top: 20px;">you haven't added a subject yet.</p>
+     <% } -%>
+   <% for (var i = 0; i < subject.length; i++) { -%>
+  <div class="subholder">
+    <div style="display: flex;flex-direction:row;justify-content: space-between;border-bottom: 2px solid #969696; ">
+     <p style="padding: 7px 0 0 20px ; "><%=subject[i].name%>  </p><a href="/sub/edit/<%=subject[i]._id%>" style="float: right; color: #1c79be;margin:7px 3px 0px 2px ;display: flex;flex-direction: row;" ><p>edit</p><i class="fas fa-edit"></i></a></div>
+  <p style="padding: 7px 0 0 30px ; ">Total: <span><%=subject[i].total%></span> &nbsp&nbsp
+ Attended: <span><%=subject[i].attended%></span></p>
+  <% if (subject[i].total ===0 && subject[i].attended ===0) { -%>
+   <p style="padding: 7px 0 0 30px ;">Percent attended: <span>0</span></p>
+  <% } else { %>
+     <p style="padding: 7px 0 0 30px ;">Percent attended:<span> <%=Math.floor(subject[i].attended/subject[i].total*100)%></span></p>
+  <% } -%>
+   <p style="padding: 7px 0 0 30px ;">Minimum required: <span><%=subject[i].min%></span>%</p>
+   <% var canbunk = Math.floor(subject[i].attended*100/subject[i].min - subject[i].total)%>
+   <% var cantbunk = Math.floor((subject[i].min*subject[i].total/100 - subject[i].attended)*100/(100-subject[i].min))%>
+<% if (canbunk==0 || cantbunk ==0) { -%>
+  <p style="padding: 7px 0 10px 30px ;color: green">you are on the track!</p>
+<% } else { -%>
+  <% if (subject[i].min<Math.floor(subject[i].attended/subject[i].total*100)) { -%>
+    <p style="padding: 7px 0 10px 30px ;color: green">you can bunk <span><%=canbunk%></span> 
+      <%  if(canbunk==1){%>
+ class.
+ <% }else{%>
+ classes.
+ <%}%>
+</p>
+  <% } else {if(subject[i].min==Math.floor(subject[i].attended/subject[i].total*100)){ -%>
+   <p style="padding: 7px 0 10px 30px ;color: green">you are on the track!</p>
+   <%}else{%>
+    <p style=" padding: 7px 0 10px 30px ; color:#cc1c1c;">you need to attend next <span><%=cantbunk%></span>
+    <%  if(cantbunk==1){%>
+ class.
+ <% }else{%>
+ classes.
+ <%}%>
+</p>
+
+  <% } -%>
+  
+   
+ <% }-%> 
+<% } -%>
+   
+ 
+ </div>
+<% }-%> <p style="display: block;font-size: 20px; background: white;text-align: center;margin-top: 10px;margin-bottom: 10px;padding-top: 10px;padding-bottom: 10px;">add a subject:</p>
+<div style="background: white;"><form method="POST" action="/withtt/addSub">
+  <input style="margin-left: 10%; margin-top: 20px; padding: 2px 5px 2px 10px; width: 80%; margin-bottom:2px;height:30px; "type="text" name="name" placeholder="Name of subject or course" required>
+  <input style="margin-left: 10%; padding: 2px 5px 2px 10px; width: 80%; margin-bottom:2px; height:30px;" type="number" name="total" placeholder="Total Classes" required title="total should be greater than attended" min="0">
+  <input style="margin-left: 10%; padding: 2px 5px 2px 10px; width: 80%; margin-bottom:2px;height:30px; " type="number" name="attended"  placeholder="Attended Classes" required title="total should be greater than attended" min="0">
+  <input style="margin-left: 10%;margin-bottom: 20px; padding: 2px 5px 2px 10px; width: 80%;height:30px;  " type="number" name="min" placeholder="Minimum attendance required(%)" min="1" max="100"  required></div>
+ <button style="display: block;font-size: 20px;
+ margin: auto;cursor: pointer;
+ width: 50%; background: white;text-align: center;margin-top: 10px;margin-bottom: 10px;padding-top: 2px;padding-bottom: 2px;">Add</button>
+</form>
+   </div>
+   <div class="box cal" > 
+<p style="display: block;font-size: 20px; background: white;text-align: center;">Check attendance</p><div class="subholder">
+<%var month_arr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];%>
+ <p style="display: block;font-size: 20px; background: white;text-align: center;margin-bottom: 10px;padding-top: 10px;"><% if (month==1) { -%>
+    <a href="/withtt/combined/<%=year-1%>/12"><i class="fas fa-chevron-circle-left"></i></a>
+     <span> <%=month_arr[month-1]%>&nbsp <%=year%></span> &nbsp 
+  <a href="/withtt/combined/<%=year%>/<%=Number(month)+1%>"><i class="fas fa-chevron-circle-right"></i></a>
+  <% } else if(month==12){ -%>
+    <a href="/withtt/combined/<%=year%>/<%=month-1%>"><i class="fas fa-chevron-circle-left"></i></a>
+      <span> <%=month_arr[month-1]%> &nbsp <%=year%></span>   &nbsp
+  <a href="/withtt/combined/<%=Number(year)+1%>/1"><i class="fas fa-chevron-circle-right"></i></a>
+  <% } else {-%>
+  <a href="/withtt/combined/<%=year%>/<%=month-1%>"><i class="fas fa-chevron-circle-left"></i></a>
+    <span> <%=month_arr[month-1]%>&nbsp <%=year%></span>  &nbsp 
+  <a href="/withtt/combined/<%=year%>/<%=Number(month)+1%>"><i class="fas fa-chevron-circle-right"></i></a>
+  <%}-%></p>
+  <div ><table>
+    <tr>
+    <td>Sun</td>
+    <td>Mon</td>
+    <td>Tue</td>
+    <td>Wed</td>
+    <td>Thu</td>
+    <td>Fri</td>
+    <td>Sat</td>
+  </tr>
+  <%var daytracker;%>
+  <% for (var i = 0; i < cal.length; i++) { -%>
+<tr><% for (var j = 0; j < cal[i].length; j++) { -%>
+  <%if (cal[i][j]==td) {daytracker = 5}%>
+  <% if (cal[i][j]==0) { -%>
+  <td></td>
+  <% } else { -%>
+    <td ><a href="/withtt/history/<%=year%>/<%=month%>/<%=cal[i][j]%>"><%=cal[i][j]%></a></td>
+  <% } -%>
+<% } -%></tr>
+<% } -%></table></div>
+</div>
+   </div> 
+  </div>
+</section> 
+</div>
+<style type="text/css">
+ a[href="/withtt/history/<%=ty%>/<%=tm%>/<%=td%>"]{border:2px solid #175ead;border-radius: 10px;padding: 4px;color: #175ead;margin: -6px; background: white;}
+</style>
+  
+
+
+</body>
+</html>
+
+

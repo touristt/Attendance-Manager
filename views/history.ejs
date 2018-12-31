@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127104115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127104115-1');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3659651196402257",
+    enable_page_level_ads: true
+  });
+</script>
+	<title>Attendance Manager</title>
+  <script type="text/javascript">
+
+if (screen.width >= 770) {
+   var t  = new Date(),
+      td = t.getUTCDate(),
+      tm = t.getUTCMonth() + 1,
+      ty = t.getUTCFullYear();
+document.location = "/withtt/combined/"+ty+"/"+tm;
+}
+
+</script>
+	<meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color" content="#01518c" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<!-- <script type="text/javascript">
+<%  var t  = new Date(),
+      td = t.getUTCDate(),
+      tm = t.getUTCMonth() + 1,
+      ty = t.getUTCFullYear();%>
+var is_mobile = /symbian|tizen|midp|uc(web|browser)|MSIE (5.0|6.0|7.0|8.0)|tablet/i.test(navigator.userAgent);  if(!is_mobile) window.location.href = "/withtt/combined/<%=ty%>/<%=tm%>";</script> -->
+   <style type="text/css">
+   *{  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+body {               width:   100%;
+              
+               background:white;
+  font-family:   'Montserrat', sans-serif;
+                   display:   -webkit-box;
+          -webkit-box-pack:   center;
+             
+} 
+   	#wrapper{
+   		
+   		 
+   		max-width:    100%;
+                   margin:    0;
+                  display:    -webkit-box;
+       -webkit-box-orient:    vertical;
+         -webkit-box-flex:    1;
+           
+
+   	}
+   	nav{ 
+   		max-width: 100%;
+   		height:  50px;
+   		background:#1c79be;
+   		color: white;
+
+   	}
+   	nav li{
+   		display: inline-block;
+   		list-style: none;
+   	}
+   	li {
+    float: right;
+}
+   
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+   
+    text-decoration: none;
+}
+
+   nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1c79be;
+
+}
+
+ 
+
+ .boxwrap{-webkit-box-flex:   1;
+      
+            display:flex;justify-content:center;align-items:center;
+               margin-top:  80px;}
+      
+
+ .box{
+ border: 2px solid white;
+border-radius: 5px;
+ background:#e9e9eb;
+ 
+
+  height: auto;
+  width: 350px;
+  
+  margin-bottom: 10px;
+  
+  
+ }
+ a {text-decoration:none;}
+ 
+
+
+ body{background-image: linear-gradient(to right, #145bab,#88d4e1);}
+
+.subholder{
+  width: 98%;margin-top: 7px;margin-bottom: 7px;
+  margin-left: auto;margin-right: auto;
+  background: white;border-radius: 5px;
+
+}
+span{font-weight: 600}
+.fa-check-circle{color: green;}
+.fa-times-circle{color: #cc1c1c;}
+.fa-minus-circle{color: #ced32a;}
+.fa-plus-circle{color: green;}
+.fa-chevron-circle-right{color: #165dac;}
+.fa-chevron-circle-left{color: #165dac;}
+i{font-size: 20px;margin-right: 10px; cursor: pointer;}
+table{margin: 5px auto 5px auto;width: 85%; padding-bottom: 20px;}
+table a{ text-decoration:none;color: black;font-weight: 600;}
+td {
+    padding: 0.5vw;
+    text-align: left;
+   
+
+}.log{ padding: 14px 16px;
+}
+   </style>
+</head>
+<body>
+<div id="wrapper">
+<nav>
+		<ul><%if(!currentUser){%>
+			<li><a href="/login" class="log">Login</a></li>
+			<li><a href="/register" class="log">Sign Up</a></li><%}else{%>
+			 <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/withtt"><i class="fas fa-arrow-left"></i></a></li>
+      <li style="float: left; margin: 15px; margin-left: 25px; font-size: 20px;"><a href="/"><i class="fas fa-home"></i></li></a>
+			<li><a href="/logout" class="log">Logout</a></li><%}%>
+		</ul>
+</nav>
+
+<section>
+	<div class="boxwrap">
+
+     <% var arr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]%>
+<%var day = new Date(); var day = day.getUTCDay()%>
+
+<%var t  = new Date(),
+      td = t.getUTCDate(),
+      tm = t.getUTCMonth() + 1,
+      ty = t.getUTCFullYear(),
+       str = ty+""+tm+""+td;
+      
+      %>
+
+   
+   <div class="box cal" > 
+<p style="display: block;font-size: 20px; background: white;text-align: center;">Check attendance</p><div class="subholder">
+<%var month_arr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];%>
+ <p style="display: block;font-size: 20px; background: white;text-align: center;margin-bottom: 10px;padding-top: 10px;"><% if (month==1) { -%>
+    <a href="/withtt/history/<%=year-1%>/12"><i class="fas fa-chevron-circle-left"></i></a>
+     <span> <%=month_arr[month-1]%>&nbsp <%=year%></span> &nbsp 
+  <a href="/withtt/history/<%=year%>/<%=Number(month)+1%>"><i class="fas fa-chevron-circle-right"></i></a>
+  <% } else if(month==12){ -%>
+    <a href="/withtt/history/<%=year%>/<%=month-1%>"><i class="fas fa-chevron-circle-left"></i></a>
+      <span> <%=month_arr[month-1]%> &nbsp <%=year%></span>   &nbsp
+  <a href="/withtt/history/<%=Number(year)+1%>/1"><i class="fas fa-chevron-circle-right"></i></a>
+  <% } else {-%>
+  <a href="/withtt/history/<%=year%>/<%=month-1%>"><i class="fas fa-chevron-circle-left"></i></a>
+    <span> <%=month_arr[month-1]%>&nbsp <%=year%></span>  &nbsp 
+  <a href="/withtt/history/<%=year%>/<%=Number(month)+1%>"><i class="fas fa-chevron-circle-right"></i></a>
+  <%}-%></p>
+  <div ><table >
+
+
+  
+    <tr>
+    <td>Sun</td>
+    <td>Mon</td>
+    <td>Tue</td>
+    <td>Wed</td>
+    <td>Thu</td>
+    <td>Fri</td>
+    <td>Sat</td>
+  </tr>
+  <%var daytracker;%>
+  <% for (var i = 0; i < cal.length; i++) { -%>
+<tr><% for (var j = 0; j < cal[i].length; j++) { -%>
+  <%if (cal[i][j]==td) {daytracker = 5}%>
+  <% if (cal[i][j]==0) { -%>
+  <td></td>
+  <% } else { -%>
+    <td ><a href="/withtt/history/<%=year%>/<%=month%>/<%=cal[i][j]%>"><%=cal[i][j]%></a></td>
+  <% } -%>
+  
+<% } -%></tr>
+  
+<% } -%></table></div>
+</div>
+  
+
+   </div> 
+  </div>
+
+</section>
+
+</div>
+
+  
+<style type="text/css">
+ a[href="/withtt/history/<%=ty%>/<%=tm%>/<%=td%>"]{border:2px solid #175ead;border-radius: 10px;padding: 4px;color: #175ead; background: white;margin: -7px;}
+</style>
+  
+
+
+</body>
+</html>
+
+
